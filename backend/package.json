@@ -1,0 +1,50 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Contact Form API (Express + PostgreSQL + Resend)",
+  "main": "dist/server.js",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit",
+    "typeorm": "tsx ./node_modules/typeorm/cli.js -d ./src/database/connections/index.ts",
+    "m:generate": "npm run typeorm migration:generate ./src/database/migrations/%npm_config_name%",
+    "m:generate:mac": "npm run typeorm migration:generate ./src/database/migrations/$npm_config_name",
+    "m:create": "typeorm migration:create ./src/database/migrations/%npm_config_name%",
+    "m:create:mac": "typeorm migration:create ./src/database/migrations/$npm_config_name",
+    "m:show": "npm run typeorm migration:show",
+    "m:run": "npm run typeorm migration:run",
+    "m:revert": "npm run typeorm migration:revert",
+    "m:run:prod": "typeorm migration:run -d ./dist/database/connections/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "helmet": "^8.3.0",
+    "http-errors": "^2.0.1",
+    "pdfkit": "^0.20.2",
+    "pg": "^8.23.0",
+    "reflect-metadata": "^0.2.2",
+    "resend": "^6.27.0",
+    "typeorm": "^1.1.1",
+    "zod": "^4.6.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/http-errors": "^2.0.5",
+    "@types/node": "^22.20.2",
+    "@types/pdfkit": "^0.17.6",
+    "@types/pg": "^8.23.1",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}
